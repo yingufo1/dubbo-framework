@@ -19,8 +19,9 @@ public class Consumer {
 		context.start();
 		
 		Consumer consumer = context.getBean(Consumer.class);
+		int i=0;
 		while (true) {
-			consumer.consume();
+			consumer.consume(++i);
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
@@ -32,7 +33,7 @@ public class Consumer {
 		}
 	}
 	
-	public void consume(){
-		sayhelloService.sayHello();
+	public void consume(int i){
+		sayhelloService.sayHello(i);
 	}
 }

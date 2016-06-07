@@ -16,18 +16,15 @@
 
 	<util:properties id="dubboProperties"
 		location="classpath:properties/ipConfig.properties" />
-	<dubbo:annotation package="com.zlebank.zplatform.dubbo.framework" />
 	<dubbo:application name="demo" owner="yangying" />
 
 	<dubbo:registry id="zk-99"
-		address="zookeeper://#{dubboProperties['zk.ip']}:#{dubboProperties['zk.port']}"
-		check="false" subscribe="true" register="true" />
+		address="zookeeper://#{dubboProperties['zk.ip']}:#{dubboProperties['zk.z1.port']}?backup=#{dubboProperties['zk.ip']}:#{dubboProperties['zk.z2.port']},#{dubboProperties['zk.ip']}:#{dubboProperties['zk.z3.port']}"
+		check="true" subscribe="true" register="true" />
 
 	<dubbo:protocol name="dubbo" port="20891" />
 
-	<dubbo:provider id="business_4_all" threads="100"
-		threadpool="fixed" accepts="100" timeout="5000" retries="1"
+	<dubbo:provider id="demo" threads="100" dispatcher="all"
+		threadpool="fixed" accepts="100" timeout="5000" retries="2"
 		connections="5" cluster="failover" loadbalance="random" registry="zk-99" />
-
-	<dubbo:consumer check="false" />
 </beans>

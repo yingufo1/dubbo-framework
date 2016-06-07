@@ -19,8 +19,8 @@
 	<dubbo:annotation package="com.zlebank.zplatform.dubbo.consumer" />
 	<dubbo:application name="demo" owner="yangying" />
 
-	<dubbo:registry id="zk-99"
-		address="zookeeper://#{dubboProperties['zk.ip']}:#{dubboProperties['zk.port']}"
+	<dubbo:registry id="zk-99" protocol="zookeeper"
+		address="#{dubboProperties['zk.ip']}:#{dubboProperties['zk.z1.port']},#{dubboProperties['zk.ip']}:#{dubboProperties['zk.z2.port']},#{dubboProperties['zk.ip']}:#{dubboProperties['zk.z3.port']}"
 		check="true" subscribe="true" register="true" />
 
 	<dubbo:protocol name="dubbo" port="20891" />

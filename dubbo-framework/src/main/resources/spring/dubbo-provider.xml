@@ -11,6 +11,6 @@
     http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
 	default-lazy-init="false"> 
   
-    <dubbo:service interface="com.zlebank.zplatform.dubbo.framework.interfaces.ISayHello" ref="sayhello" provider="business_4_all" >
+    <dubbo:service interface="com.zlebank.zplatform.dubbo.framework.interfaces.ISayHello" ref="sayhello" provider="demo" >
     </dubbo:service> 
 </beans>
